@@ -1,6 +1,8 @@
 # DDLCPlusInjector
 Mod/DLL support for Doki Doki Literature Club Plus.
 
+#### NOTE: This might be pretty obvious but for developing/using mods you need to have a copy of the game, You can buy it on https://ddlc.plus.
+
 # Installing
 1. Download a patched ```Assembly-CSharp.dll``` from the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page
 2. Put the patched ```Assembly-CSharp.dll``` in the folder ```Doki Doki Literature Club Plus_Data/Managed/``` of the game
@@ -23,6 +25,23 @@ This is just a little guide of how to develop mods for DDLC Plus in a easy way.
 5. Compile the project
 6. After compiling, Put the DLL file in a folder called ```mods/``` in the DDLC Plus base folder
 7. Test (Obviously for testing you have to install the Injector first)
+
+In the [Templates](https://github.com/ElCosmoXD/DDLCPlusInjector/tree/main/Template) folder, You can find a little example of how to write a mod. (You may be thinking this but yes, The main class MUST be named 'Mod' and should be inside of a 'DDLCPlus' namespace).
+``` C#
+using UnityEngine;
+
+namespace DDLCPlus
+{
+    public class Mod
+    {
+        public static void Setup()
+        {
+            Debug.Log("Hello, World!");
+            Debug.Log("This message comes from an loaded mod!");
+        }
+    }
+}
+```
 
 # Patching the game
 This step is necessary when you want to patch the ```Assembly-CSharp.dll``` file by yourself. But you have to know that you will have to make many modifications to the file for making the mods work.
