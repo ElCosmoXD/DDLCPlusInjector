@@ -6,9 +6,10 @@ namespace RenpyLauncher
 	public class LauncherMain : MonoBehaviour
 	{
 		//....
-		public void OnLauncherLoaded()
+		private void Awake()
 		{
 			//...
+			
 			try    
 			{    
 			 	Debug.Log("Loading the injector assembly...");     
