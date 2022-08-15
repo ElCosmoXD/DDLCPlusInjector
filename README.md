@@ -3,6 +3,14 @@ Mod/DLL support for Doki Doki Literature Club Plus.
 
 #### NOTE: This might be pretty obvious but for developing/using mods you need to have a copy of the game, You can buy it on https://ddlc.plus.
 
+# Work in progress
+I have just started this, So there's a lot to implement and this isn't stable yet. [Any PR is welcome](https://github.com/ElCosmoXD/DDLCPlusInjector/pulls) ;)
+
+### To Do
+- [ ] Add functions for checking more game events (As an example of this: ```OnLauncherLoaded```)
+- [ ] Add a easy-to-use api for getting and setting values, assets, and other things
+- [ ] Add the documentation with the functions for making  the development of the mods even more easier
+
 # Installing
 1. Download a patched ```Assembly-CSharp.dll``` from the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page
 2. Put the patched ```Assembly-CSharp.dll``` in the folder ```Doki Doki Literature Club Plus_Data/Managed/``` of the game
