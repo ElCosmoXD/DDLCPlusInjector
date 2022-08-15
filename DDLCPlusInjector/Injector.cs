@@ -21,16 +21,25 @@ namespace DDLCPlusInjector
                     Debug.Log("Loading the injector assembly...");
                     Assembly assembly = Assembly.LoadFrom(dll);
                     if (assembly == null)
+                    {
                         Debug.LogError("Can't find the assembly!");
+                        continue;
+                    }
 
                     Debug.Log("Searching for the 'DDLCPlus.Mod' class and calling the 'Setup' function!");
                     Type type = assembly.GetType("DDLCPlus.Mod", true);
                     if (type == null)
+                    {
                         Debug.LogError("Can't find 'DDLCPlus.Mod' type!");
+                        continue;
+                    }
 
                     MethodInfo method = type.GetMethod("Setup", BindingFlags.Static | BindingFlags.Public);
                     if (method == null)
+                    {
                         Debug.LogError("Can't find method!");
+                        continue;
+                    }
 
                     method.Invoke(null, null);
                 }
