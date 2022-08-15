@@ -44,6 +44,9 @@ namespace DDLCPlus
     }
 }
 ```
+Now, if you run the game and you see the Unity's 'Player.log' file, You will see this:
+
+![HelloWorld](https://user-images.githubusercontent.com/37759352/184688088-724ac446-4436-49ff-b6bf-a2e215f76a59.png)
 
 # Patching the game
 This step is necessary when you want to patch the ```Assembly-CSharp.dll``` file by yourself. But you have to know that you will have to make many modifications to the file for making the mods work.
