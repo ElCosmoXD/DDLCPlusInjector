@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using UnityEngine;
 
 namespace DDLCPlusInjector
 {
@@ -14,7 +16,28 @@ namespace DDLCPlusInjector
 
             foreach(string dll in dll_files)
             {
-                UnityEngine.Debug.Log("Importing dll " + dll);
+                try
+                {
+                    Debug.Log("Loading the injector assembly...");
+                    Assembly assembly = Assembly.LoadFrom(dll);
+                    if (assembly == null)
+                        Debug.LogError("Can't find the assembly!");
+
+                    Debug.Log("Searching for the 'DDLCPlus.Mod' class and calling the 'Setup' function!");
+                    Type type = assembly.GetType("DDLCPlus.Mod", true);
+                    if (type == null)
+                        Debug.LogError("Can't find 'DDLCPlus.Mod' type!");
+
+                    MethodInfo method = type.GetMethod("Setup", BindingFlags.Static | BindingFlags.Public);
+                    if (method == null)
+                        Debug.LogError("Can't find method!");
+
+                    method.Invoke(null, null);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError("Injection failed!, Error: " + ex.Message);
+                }
             }
         }
     }
