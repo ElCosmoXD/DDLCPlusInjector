@@ -11,6 +11,8 @@ Mod/DLL support for Doki Doki Literature Club Plus.
 5. In the root of the game folder create the ```mods/``` folder
 6. Install mods and put them into the ```mods/``` folder
 
+#### Please, before doing anything do a backup of the ```Assembly-CSharp.dll``` file, Because if something goes wrong you will have to reinstall the game.
+
 Now the DDLC Plus folder should look like this :)
 
 ![Installed](https://user-images.githubusercontent.com/37759352/184675275-f85e90f2-1bd6-4898-a4db-5fd0d322ef79.png)
