@@ -67,4 +67,4 @@ This step is necessary when you want to patch the ```Assembly-CSharp.dll``` file
 
 # Credits
 
-[Team Salvato](https://teamsalvato.com/): The creators and the owners of "[Doki Doki Literature Club Plus](https://ddlc.plus/)" and "Doki Doki Literature Club".
+[Team Salvato](https://teamsalvato.com/): The creators and the owners of "[Doki Doki Literature Club Plus](https://ddlc.plus/)" and "[Doki Doki Literature Club](http://ddlc.moe)".
