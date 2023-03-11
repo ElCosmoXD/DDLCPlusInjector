@@ -1,15 +1,11 @@
-# DDLCPlusInjector
+# DDLC Plus Injector
 Mod/DLL support for Doki Doki Literature Club Plus.
 
+#### I'm working again on this project, obviously I have other things to do, so if you want to add something [any PR is welcome](https://github.com/ElCosmoXD/DDLCPlusInjector/pulls).
 #### NOTE: This might be pretty obvious but for developing/using mods you need to have a copy of the game, You can buy it on https://ddlc.plus.
 
 # Work in progress
-I have just started this, So there's a lot to implement and this isn't stable yet. [Any PR is welcome](https://github.com/ElCosmoXD/DDLCPlusInjector/pulls) ;)
-
-### To Do
-- [ ] Add functions for checking more game events (As an example of this: ```OnLauncherLoaded```)
-- [ ] Add a easy-to-use api for getting and setting values, assets, and other things
-- [ ] Add the documentation with the functions for making  the development of the mods even more easier
+This is just a work-in-progress, so don't expecto something too stable or a massive amount of mods.
 
 # Installing
 1. Download a patched ```Assembly-CSharp.dll``` from the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page
@@ -30,13 +26,15 @@ This is just a little guide of how to develop mods for DDLC Plus in a easy way.
 
 1. Create a C# solution (Specifically a .NET Standard solution) using Visual Studio (You can use any IDE but I haven't tested with others)
 2. In the project dependencies add the *.DLL's that are in the DDLC Plus folder (```Doki Doki Literature Club Plus_Data/Managed```)
-3. (OPTIONAL) Also, In the project dependencies add the DDLCPlusModAPI.dll, You can download this file in the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page or you can compile it by yourself [cloning this repository](https://github.com/ElCosmoXD/DDLCPlusInjector/archive/refs/heads/main.zip) and compiling the project in the folder [DDLCPlusModAPI](https://github.com/ElCosmoXD/DDLCPlusInjector/tree/main/DDLCPlusModAPI).
-4. Add your code
-5. Compile the project
-6. After compiling, Put the DLL file in a folder called ```mods/``` in the DDLC Plus base folder
-7. Test (Obviously for testing you have to install the Injector first)
+(https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page or you can compile it by yourself [cloning this repository](https://github.com/ElCosmoXD/DDLCPlusInjector/archive/refs/heads/main.zip) and compiling the project in the folder [DDLCPlusModAPI](https://github.com/ElCosmoXD/DDLCPlusInjector/tree/main/DDLCPlusModAPI).
+3. Add your code
+4. Compile the project
+5. After compiling, Put the DLL file in a folder called ```mods/``` in the DDLC Plus base folder
+6. Test (Obviously for testing you have to install the Injector first)
 
-In the [Templates](https://github.com/ElCosmoXD/DDLCPlusInjector/tree/main/Template) folder, You can find a little example of how to write a mod. (You may be thinking this but yes, The main class MUST be named 'Mod' and should be inside of a 'DDLCPlus' namespace).
+In order to interact with the game, you should write the mod like a Unity game, with the MonoBehavieour class as a base.
+
+#### A little example of how write a simple mod:
 ``` C#
 using UnityEngine;
 
@@ -61,9 +59,8 @@ This step is necessary when you want to patch the ```Assembly-CSharp.dll``` file
 
 1. Install [dnSpy](https://github.com/dnSpy/dnSpy/releases)
 2. With [dnSpy](https://github.com/dnSpy/dnSpy/releases) open the ```Assembly-CSharp.dll``` file (That is in ```Doki Doki Literature Club Plus_Data/Managed/Assembly-CSharp.dll```)
-3. Patch the clases.... (As a note, I haven't patched all the game yet, So I'll write a markdown with the classes and functions to patch.)
-4. Go to ```File->Save All...``` and ```File->Save Module...```
-5. There it is, Now the game is patched
+3. Patch the 'Awake' method in the 'LauncherMain' class using the code in the ```Patch``` folder
+4. Compile the patched file
 
 # Credits
 
