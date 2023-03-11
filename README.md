@@ -24,9 +24,8 @@ Now the DDLC Plus folder should look like this :)
 # For Developers
 This is just a little guide of how to develop mods for DDLC Plus in a easy way.
 
-1. Create a C# solution (Specifically a .NET Standard solution) using Visual Studio (You can use any IDE but I haven't tested with others)
+1. Create a C# solution (Specifically a DLL .NET Standard solution) using Visual Studio (You can use any IDE but I haven't tested with others)
 2. In the project dependencies add the *.DLL's that are in the DDLC Plus folder (```Doki Doki Literature Club Plus_Data/Managed```)
-(https://github.com/ElCosmoXD/DDLCPlusInjector/releases)
 3. Add your code
 4. Compile the project
 5. After compiling, Put the DLL file in a folder called ```mods/``` in the DDLC Plus base folder
