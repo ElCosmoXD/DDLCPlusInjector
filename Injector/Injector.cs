@@ -11,7 +11,20 @@ namespace DDLCInjector
         string consoleOut = "Welcome!\n";
         string userInput = "";
         Vector2 scrollPos = Vector2.zero;
-        private static List<string> modDllFiles = new List<string>();
+        List<string> modDllFiles = new List<string>();
+        Dictionary<string, Assembly> modAssemblies = new Dictionary<string, Assembly>();
+
+        void Print(string text)
+        {
+            consoleOut += $"{text}\n";
+            Debug.Log(text);
+        }
+
+        void PrintError(string text)
+        {
+            consoleOut += $"{text}\n";
+            Debug.LogError(text);
+        }
 
         bool LoadMods()
         {
@@ -37,14 +50,30 @@ namespace DDLCInjector
                         continue;
                     }
 
+                    var nameField = type.GetField("name", BindingFlags.Static | BindingFlags.Public);
+                    if (nameField == null)
+                    {
+                        PrintError("Can't find the 'name' property! Skipping mod...");
+                        continue;
+                    }
+
+                    string modName = nameField.GetValue(null) as string;
+                    if(modName == null)
+                    {
+                        PrintError("Couldn't find the name of the mod! Skipping...");
+                        continue;
+                    }
+
                     MethodInfo method = type.GetMethod("Start", BindingFlags.Static | BindingFlags.Public);
                     if (method == null)
                     {
-                        PrintError("Can't find method!");
+                        PrintError("Can't find the 'Start' method!");
                         continue;
                     }
 
                     method.Invoke(null, null);
+
+                    modAssemblies.Add(modName, assembly);
                 }
                 catch (Exception ex)
                 {
@@ -81,18 +110,59 @@ namespace DDLCInjector
             GUILayout.EndScrollView();
 
             userInput = GUILayout.TextField(userInput, GUILayout.MinWidth(800));
+
+            if(GUILayout.Button("Execute"))
+            {
+                string[] input = userInput.Split(' ');
+                Parse(input[0], input);
+            }
         }
 
-        void Print(string text)
+        void Parse(string command, string[] args)
         {
-            consoleOut += $"{text}\n";
-            Debug.Log(text);
+            switch(command.ToLower())
+            {
+                case "print":
+                    {
+                        switch(args[1].ToLower())
+                        {
+                            case "scene":
+                                Print(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+                                break;
+
+                            default:
+                                Print($"Unknown function/variable: {args[1]}!");
+                                break;
+                        }
+                    }
+
+                    break;
+
+                case "execute":
+                    {
+                        Execute(args[1], args[2]);
+                    }
+
+                    break;
+
+                default:
+                    Print($"Unknown command: {command}!");
+                    break;
+            }
         }
 
-        void PrintError(string text)
+        void Execute(string source, string command)
         {
-            consoleOut += $"{text}\n";
-            Debug.LogError(text);
+            if(modAssemblies.TryGetValue(source, out var assembly))
+            {
+                Type type = assembly.GetType("DDLCPlus.Mod", true);
+                MethodInfo method = type.GetMethod(command, BindingFlags.Static | BindingFlags.Public);
+                method.Invoke(null, null);
+
+                return;
+            }
+
+            PrintError($"Can't find mod/assembly: {source}");
         }
     }
 
