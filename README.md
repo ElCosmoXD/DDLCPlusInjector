@@ -42,7 +42,7 @@ namespace DDLCPlus
 {
     public class Mod
     {
-        public static void Setup()
+        public static void Start()
         {
             Debug.Log("Hello, World!");
             Debug.Log("This message comes from an loaded mod!");
