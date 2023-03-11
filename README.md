@@ -10,7 +10,7 @@ This is just a work-in-progress, so don't expecto something too stable or a mass
 # Installing
 1. Download a patched ```Assembly-CSharp.dll``` from the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page
 2. Put the patched ```Assembly-CSharp.dll``` in the folder ```Doki Doki Literature Club Plus_Data/Managed/``` of the game
-3. Download the ```DDLCPlusInjector.dll``` file from [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) or compile it by yourself [cloning this repository](https://github.com/ElCosmoXD/DDLCPlusInjector/archive/refs/heads/main.zip) and compiling the DDLCPlusInjector solution
+3. Download the ```DDLC+ Injector.dll``` file from [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) or compile it by yourself [cloning this repository](https://github.com/ElCosmoXD/DDLCPlusInjector/archive/refs/heads/main.zip) and compiling the Injector solution
 4. Put the downloaded file in the root of the folder of the game
 5. In the root of the game folder create the ```mods/``` folder
 6. Install mods and put them into the ```mods/``` folder
