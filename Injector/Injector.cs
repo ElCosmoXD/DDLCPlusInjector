@@ -14,6 +14,8 @@ namespace DDLCInjector
         List<string> modDllFiles = new List<string>();
         Dictionary<string, Assembly> modAssemblies = new Dictionary<string, Assembly>();
 
+        bool draw = true;
+
         void Print(string text)
         {
             consoleOut += $"{text}\n";
@@ -98,11 +100,17 @@ namespace DDLCInjector
             {
                 PrintError("Looks like there was an error while loading a mod!");
                 Print("Please, check that your mods are alright or delete them.");
+
+                return;
             }
+
+            draw = false;
         }
 
         private void OnGUI()
         {
+            if (!draw) return;
+
             scrollPos = GUILayout.BeginScrollView(scrollPos, GUILayout.Height(Screen.height - 50));
             {
                 GUILayout.TextArea(consoleOut, GUILayout.ExpandHeight(true));
@@ -116,6 +124,12 @@ namespace DDLCInjector
                 string[] input = userInput.Split(' ');
                 Parse(input[0], input);
             }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.C))
+                draw = !draw;
         }
 
         void Parse(string command, string[] args)
@@ -170,7 +184,7 @@ namespace DDLCInjector
     {
         public static bool _Inject()
         {
-            Debug.Log("Hello, World from the injector!");
+            Debug.Log("Starting injector...");
 
             GameObject injectorConsole = new GameObject();
             injectorConsole.AddComponent<InjectorConsole>();
@@ -180,6 +194,8 @@ namespace DDLCInjector
                 Debug.LogError("Failed to load the console!");
                 return false;
             }
+
+            GameObject.DontDestroyOnLoad(injectorConsole);
 
             return true;
         }
