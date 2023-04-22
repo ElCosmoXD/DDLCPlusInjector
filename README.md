@@ -8,18 +8,18 @@ Mod/DLL support for Doki Doki Literature Club Plus.
 This is just a work-in-progress, so don't expecto something too stable or a massive amount of mods.
 
 # Installing
-1. Download a patched ```Assembly-CSharp.dll``` from the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page
-2. Put the patched ```Assembly-CSharp.dll``` in the folder ```Doki Doki Literature Club Plus_Data/Managed/``` of the game
+1. Download a patched ```DDLC.dll``` from the [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) page
+2. Put the patched ```DDLC.dll``` in the folder ```Doki Doki Literature Club Plus_Data/Managed/``` of the game
 3. Download the ```DDLC+ Injector.dll``` file from [Releases](https://github.com/ElCosmoXD/DDLCPlusInjector/releases) or compile it by yourself [cloning this repository](https://github.com/ElCosmoXD/DDLCPlusInjector/archive/refs/heads/main.zip) and compiling the Injector solution
 4. Put the downloaded file in the root of the folder of the game
 5. In the root of the game folder create the ```mods/``` folder
 6. Install mods and put them into the ```mods/``` folder
 
-#### Please, before doing anything do a backup of the original ```Assembly-CSharp.dll``` file, Because if something goes wrong you will have to reinstall the game.
+#### Please, before doing anything do a backup of the original ```DDLC.dll``` file, Because if something goes wrong you will have to reinstall the game.
 
 Now the DDLC Plus folder should look like this :)
 
-![Installed](https://user-images.githubusercontent.com/37759352/184675275-f85e90f2-1bd6-4898-a4db-5fd0d322ef79.png)
+![Installed](Assets/Installed.png)
 
 # For Developers
 This is just a little guide of how to develop mods for DDLC Plus in a easy way.
